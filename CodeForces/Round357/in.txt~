@@ -1,0 +1,7 @@
+2
+insert 3
+getMin 44
+insert 1
+insert 1
+removeMin
+getMin 2

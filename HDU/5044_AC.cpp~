@@ -1,0 +1,123 @@
+#include <cstdio>
+#include <cstring>
+#include <algorithm>
+using namespace std;
+
+const int MAXN = 100010;
+typedef long long ll;
+
+int d[MAXN];
+int fa[MAXN][20];
+ll disp[MAXN], dise[MAXN];
+ll res[MAXN];
+int head[MAXN];
+struct node {
+	int Next, to;
+};
+int tot1;
+node edge[MAXN << 1];
+
+int lca(int u, int v) {
+	if(d[u] < d[v]) swap(u, v);
+	for(int i = 19; i >= 0; i--) {
+		if(d[fa[u][i]] >= d[v]) u = fa[u][i];
+		if(u == v) return v;
+	}
+	for(int i = 19; i >= 0; i--) {
+		if(fa[u][i] != fa[v][i]) {
+			u = fa[u][i];
+			v = fa[v][i];
+		}
+	}
+	return fa[u][0];
+}
+
+void dfs1(int u, int f) {
+	for(int i = head[u]; ~i; i = edge[i].Next) {
+		int v = edge[i].to;
+		if(v == f) continue;
+		d[v] = d[u] + 1;
+		fa[v][0] = u;
+		for(int j = 1; j < 20; j++)
+			fa[v][j] = fa[fa[v][j-1]][j-1];
+		dfs1(v, u);
+	}
+}
+
+void dfs2(int u, int f) {
+	for(int i = head[u]; ~i; i = edge[i].Next) {
+		int v = edge[i].to;
+		if(v == f) continue;
+		dfs2(v, u);
+		res[i / 2] = dise[v];
+		dise[u] += dise[v];
+		disp[u] += disp[v];
+	}
+}
+
+void addedge1(int u, int v) {
+	edge[tot1].to = v;
+	edge[tot1].Next = head[u];
+	head[u] = tot1++;
+	edge[tot1].to = u;
+	edge[tot1].Next = head[v];
+	head[v] = tot1++;
+}
+
+void init(int n) {
+	for(int i = 0; i < n + 10; i++) {
+		head[i] = -1;
+		disp[i] = 0;
+		dise[i] = 0;
+	}
+	tot1 = 0;
+}
+
+int main()
+{
+	ios::sync_with_stdio(false);
+	int t;
+	scanf("%d", &t);
+	for(int cas = 1; cas <= t; cas++) {
+		int n, m;
+		scanf("%d%d", &n, &m);
+		init(n);
+		int u, v;
+		addedge1(0, 1);
+		for(int i = 0; i < n - 1; i++) {
+			scanf("%d%d", &u, &v);
+			addedge1(u, v);
+		}
+		char s[10];
+		dfs1(0, -1);
+		for(int i = 0; i < m; i++) {
+			scanf("%s", s);
+			int w;
+			scanf("%d%d%d", &u, &v, &w);
+			if(s[3] == '1') {
+				disp[u] += w;
+				disp[v] += w;
+				int LCA = lca(u, v);
+				disp[LCA] -= w;
+				disp[fa[LCA][0]] -= w;
+			} else {
+				dise[u] += w;
+				dise[v] += w;
+				int LCA = lca(u, v);
+				dise[LCA] -= w * 2;
+			}
+		}
+		dfs2(0, -1);
+		printf("Case #%d:\n", cas);
+		for(int i = 0; i < n; i++) {
+			if(i) printf(" ");
+			printf("%lld", disp[i + 1]);
+		}
+		printf("\n");
+		for(int i = 0; i < n - 1; i++) {
+			if(i) printf(" ");
+			printf("%lld", res[i + 1]);
+		}
+		printf("\n");
+	}
+}

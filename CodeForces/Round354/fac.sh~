@@ -1,0 +1,19 @@
+#!/bin/bash
+
+factorial()
+{
+	i=$1
+	
+	if [ $i -eq 0 ]
+	then
+		return 1
+	else
+		factorial `expr $i - 1`
+		return `expr $i \* $?`
+	fi
+}
+
+factorial $1
+echo "result is $?"
+
+exit 0
