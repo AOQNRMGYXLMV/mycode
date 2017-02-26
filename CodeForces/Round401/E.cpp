@@ -13,7 +13,7 @@ struct Tower
 	LL h;
 	void read() { scanf("%d%d%lld", &a, &b, &h); }
 	bool operator < (const Tower& t) const {
-		return b < t.b || (b == t.b && a < t.a);
+		return b < t.b || (b == t.b && a > t.a);
 	}
 };
 
