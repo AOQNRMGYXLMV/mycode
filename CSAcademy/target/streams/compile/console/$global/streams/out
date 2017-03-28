@@ -1,0 +1,38 @@
+[0m[[0mdebug[0m] [0mWaiting for threads to exit or System.exit to be called.[0m
+[0m[[0mdebug[0m] [0mWaiting for thread run-main-0 to terminate.[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.13:component from component compiler for Scala 2.10.6[0m
+[0m[[0minfo[0m] [0m'compiler-interface' not yet compiled for Scala 2.10.6. Compiling...[0m
+[0m[[0mdebug[0m] [0mPlain interface to Scala compiler 2.10.6  with arguments: [0m
+[0m[[0mdebug[0m] [0m	-nowarn[0m
+[0m[[0mdebug[0m] [0m	-d[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_dfdd9a7d[0m
+[0m[[0mdebug[0m] [0m	-bootclasspath[0m
+[0m[[0mdebug[0m] [0m	/usr/lib/java/jdk1.8.0_121/jre/lib/resources.jar:/usr/lib/java/jdk1.8.0_121/jre/lib/rt.jar:/usr/lib/java/jdk1.8.0_121/jre/lib/sunrsasign.jar:/usr/lib/java/jdk1.8.0_121/jre/lib/jsse.jar:/usr/lib/java/jdk1.8.0_121/jre/lib/jce.jar:/usr/lib/java/jdk1.8.0_121/jre/lib/charsets.jar:/usr/lib/java/jdk1.8.0_121/jre/lib/jfr.jar:/usr/lib/java/jdk1.8.0_121/jre/classes:/home/sam/.sbt/boot/scala-2.10.6/lib/scala-library.jar[0m
+[0m[[0mdebug[0m] [0m	-classpath[0m
+[0m[[0mdebug[0m] [0m	/home/sam/.sbt/boot/scala-2.10.6/org.scala-sbt/sbt/0.13.13/xsbti/interface-0.13.13.jar:/tmp/sbt_1481a65c/srcs/org.scala-sbt/compiler-interface/compiler-interface-0.13.13-sources.jar:/home/sam/.sbt/boot/scala-2.10.6/lib/scala-compiler.jar:/home/sam/.sbt/boot/scala-2.10.6/lib/jline.jar:/home/sam/.sbt/boot/scala-2.10.6/lib/jansi.jar:/home/sam/.sbt/boot/scala-2.10.6/lib/scala-reflect.jar[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/API.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/Analyzer.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/Command.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/Compat.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/CompilerInterface.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/ConsoleInterface.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/DelegatingReporter.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/Dependency.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/ExtractAPI.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/ExtractUsedNames.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/GlobalHelpers.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/LocateClassFile.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/Log.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/Message.scala[0m
+[0m[[0mdebug[0m] [0m	/tmp/sbt_e9798fc0/xsbt/ScaladocInterface.scala[0m
+[0m[[0minfo[0m] [0m  Compilation completed in 14.195 s[0m
+[0m[[0mdebug[0m] [0mGetting org.scala-sbt:compiler-interface:0.13.13:component from component compiler for Scala 2.10.6[0m
+[0m[[0minfo[0m] [0mStarting scala interpreter...[0m
+[0m[[0minfo[0m] [0m[0m
+[0m[[0mdebug[0m] [0m	Thread run-main-0 exited.[0m
+[0m[[0mdebug[0m] [0mInterrupting remaining threads (should be all daemons).[0m
+[0m[[0mdebug[0m] [0mInterrupting thread Thread-1[0m
+[0m[[0mdebug[0m] [0m	Interrupted Thread-1[0m
+[0m[[0mdebug[0m] [0mNot interrupting system thread Thread[process reaper,10,system][0m
+[0m[[0mdebug[0m] [0mSandboxed run complete..[0m
+[0m[[0mdebug[0m] [0mExited with code 0[0m
