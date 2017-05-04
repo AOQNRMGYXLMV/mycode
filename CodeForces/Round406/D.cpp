@@ -32,6 +32,7 @@ int ecnt, head[maxn * 9];
 Edge edges[maxn * 36];
 
 void AddEdge(int u, int v, int w) {
+	printf("%d->%d, w = %d\n", u, v, w);
 	edges[ecnt] = Edge(v, w, head[u]);
 	head[u] = ecnt++;
 }
