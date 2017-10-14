@@ -99,9 +99,7 @@ int main() {
 		LL len = suf[i] - pre[i];
 		LL ban = sum[suf[i] - 1];
 		if(pre[i] > 0) ban -= sum[pre[i] - 1];
-		LL tmp = (LL)(len - ban) * height[i];
-		if(tmp > ans)
-			ans = tmp;
+		ans = max(ans, (LL)(len - ban) * height[i]);
 	}
 	printf("%I64d\n", ans);
 
