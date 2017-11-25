@@ -13,19 +13,58 @@ typedef pair<int, int> PII;
 #define PER(i, a, b) for(int i = b - 1; i >= a; i--)
 #define ALL(x) x.begin(), x.end()
 
-const int maxn = 1000000;
+const int maxn = 1000000 + 30;
+const LL MOD = 1000000007LL;
+bool vis[maxn];
+int pcnt, prime[80000];
 
-int count(int x) {
-	int i, ans = 0;
-	for(i = 1; i * i < x; i++) if(x % i == 0) ans += 2;
-	if(i * i == x) ans++;
+LL mul(LL a, LL b) { return a * b % MOD; }
+LL fac[maxn], inv[maxn];
+
+LL pow_mod(LL a, int p) {
+	LL ans = 1;
+	while(p) {
+		if(p & 1) ans = mul(ans, a);
+		a = mul(a, a);
+		p >>= 1;
+	}
 	return ans;
 }
 
+LL C(int n, int k) {
+	return mul(mul(fac[n], inv[k]), inv[n-k]);
+}
+
+void preprocess() {
+	fac[0] = 1;
+	REP(i, 1, maxn) fac[i] = mul(fac[i-1], i);
+	inv[maxn-1] = pow_mod(fac[maxn-1], MOD-2);
+	PER(i, 1, maxn) inv[i-1] = mul(inv[i], i);
+
+	REP(i, 2, maxn) {
+		if(!vis[i]) prime[pcnt++] = i;
+		REP(j, 0, pcnt) {
+			if((LL)i * prime[j] >= maxn) break;
+			vis[i * prime[j]] = true;
+			if(i % prime[j] == 0) break;
+		}
+	}
+}
+
 int main() {
-	int maxv = 2;
-	REP(i, 2, maxn + 1) maxv = max(maxv, count(i));
-	printf("%d\n", maxv);
+	preprocess();
+	int q; scanf("%d", &q);
+	while(q--) {
+		int x, y; scanf("%d%d", &x, &y);
+		LL ans = pow_mod(2, y - 1);
+		for(int i = 0; prime[i] * prime[i] <= x; i++) if(x % prime[i] == 0) {
+			int cnt;
+			for(cnt = 0; x % prime[i] == 0; cnt++, x /= prime[i]);
+			ans = mul(ans, C(y+cnt-1, cnt));
+		}
+		if(x > 1) ans = mul(ans, C(y, 1));
+		printf("%lld\n", ans);
+	}
 
 	return 0;
 }
