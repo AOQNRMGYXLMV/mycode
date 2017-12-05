@@ -121,31 +121,6 @@ void splayInit() {
 	null->s = 0; null->v = null->minv = INF;
 }
 
-void dbgEdge(Node* o) {
-	if(o->ch[0] != null) {
-		printf("%d %d\n", o->v, o->ch[0]->v);
-		dbgEdge(o->ch[0]);
-	}
-	if(o->ch[1] != null) {
-		printf("%d %d\n", o->v, o->ch[1]->v);
-		dbgEdge(o->ch[1]);
-	}
-}
-
-void dbgNode(Node* o) {
-	o->pushdown();
-	if(o->ch[0] != null) dbgNode(o->ch[0]);
-	printf("%d ", o->v);
-	if(o->ch[1] != null) dbgNode(o->ch[1]);
-}
-
-void print(Node* o, const char s[]) {
-	printf("%s\n", s);
-	dbgNode(o); printf("\n");
-}
-
-//#define LOCAL
-
 int main() {
 	int n, m;
 	while(scanf("%d", &n) == 1) {
@@ -153,10 +128,6 @@ int main() {
 		a[0] = INF;
 		REP(i, 1, n + 1) scanf("%d", a + i);
 		Node* root = build(0, n);
-
-#ifdef LOCAL
-		print(root, "build:");
-#endif
 
 		scanf("%d", &m);
 		char cmd[10];
@@ -208,9 +179,6 @@ int main() {
 				printf("%d\n", mid->minv);
 				root = merge(merge(left, mid), right);
 			}
-#ifdef LOCAL
-			print(root, "after:");
-#endif
 		}
 
 		delete null;
