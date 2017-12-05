@@ -94,7 +94,6 @@ int main() {
 	PER(i, 0, n) { upd(height[i] + 1, n - i - 1); suf[i] = n - query(height[i]) - 1; }
 
 	REP(i, 1, n) {
-		upd(height[i] + 1, i);
 		if(!height[i]) continue;
 		LL len = suf[i] - pre[i];
 		LL ban = sum[suf[i] - 1];
