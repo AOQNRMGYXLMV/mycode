@@ -15,9 +15,9 @@ typedef pair<int, int> PII;
 
 const int maxn = 200000 + 10;
 
-int n, a[maxn];
+LL n, a[maxn];
 
-LL pre[maxn];
+long double pre[maxn];
 map<int, int> cnt;
 
 int main() {
@@ -26,18 +26,18 @@ int main() {
 		scanf("%d", a + i);
 		pre[i] = pre[i-1] + a[i];
 	}
-	LL ans = 0;
+	long double ans = 0;
 	REP(i, 1, n + 1) {
-		ans += (LL)(i-1)*a[i] - pre[i-1];
+		ans += a[i]*(i-1) - pre[i-1];
 		REP(d, -1, 2) {
 			if(cnt.count(a[i]-d)) {
-				ans -= (LL)cnt[a[i]-d] * d;
+				ans -= d * cnt[a[i]-d];
 			}
 		}
 		cnt[a[i]]++;
 	}
 
-	printf("%lld\n", ans);
+	printf("%.0Lf\n", ans);
 
 	return 0;
 }
